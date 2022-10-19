@@ -5,7 +5,7 @@ pipeline {
 	environment {
 		IntegrationFlowID = "rb_ci_test_muthu"
 		ConfigParameter = "Address"
-		NewConfigValue = "/test123"
+		NewConfigValue = "/test1234"
 		CPIHost = "${env.CPI_HOST}"
 		CPIOAuthHost = "${env.CPI_OAUTH_HOST}"
 		CPIOAuthCredentials = "${env.CPI_OAUTH_CRED}"
