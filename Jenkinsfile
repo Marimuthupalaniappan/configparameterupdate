@@ -3,7 +3,7 @@ pipeline {
 
 	//Configure the following environment variables before executing the Jenkins Job
 	environment {
-		IntegrationFlowID = "IntegrationFlow1"
+		IntegrationFlowID = "muthuPOC"
 		ConfigParameter = "parameter1"
 		NewConfigValue = "myNewValue"
 		CPIHost = "${env.CPI_HOST}"
@@ -18,7 +18,7 @@ pipeline {
 				   //Get oauth token
 				   def token;
 				   try {
-					def getTokenResp = httpRequest acceptType: 'APPLICATION_JSON', 
+					def getTokenResp = httpRequest httpProxy: 'http://rb-proxy-sl.rbesz01.com:8080',acceptType: 'APPLICATION_JSON', 
 						authentication: "${env.CPIOAuthCredentials}", 
 						contentType: 'APPLICATION_JSON', 
 						httpMode: 'POST', 
@@ -31,7 +31,7 @@ pipeline {
 						error("Oauth bearer token generation failed:\n${e}")
 					}
 					//get the list of config parameters
-					def getConfigResp = httpRequest acceptType: 'APPLICATION_JSON', 
+					def getConfigResp = httpRequest httpProxy: 'http://rb-proxy-sl.rbesz01.com:8080',acceptType: 'APPLICATION_JSON', 
 						customHeaders: [[maskValue: false, name: 'Authorization', value: token]], 
 						httpMode: 'GET', 
 						ignoreSslErrors: false, 
