@@ -58,7 +58,7 @@ pipeline {
 					def putConfigPayload = '{\"ParameterValue\": \"' + "${env.NewConfigValue}" + '\", \"DataType\": \"xsd:string\"}'
 					println("Updating parameter " + "${env.ConfigParameter}" + " with new value " + "${env.NewConfigValue}");
 					try {
-						def putConfigResp = httpRequest acceptType: 'APPLICATION_JSON',
+						def putConfigResp = httpRequest httpProxy: 'http://rb-proxy-sl.rbesz01.com:8080',acceptType: 'APPLICATION_JSON',
 							customHeaders: [[maskValue: false, name: 'Authorization', value: token]], 
 							contentType: 'APPLICATION_JSON', 
 							httpMode: 'PUT', 
