@@ -3,9 +3,9 @@ pipeline {
 
 	//Configure the following environment variables before executing the Jenkins Job
 	environment {
-		IntegrationFlowID = "muthuPOC"
+		IntegrationFlowID = "rb_ci_it_test"
 		ConfigParameter = "parameter1"
-		NewConfigValue = "myNewValue"
+		NewConfigValue = "/test123"
 		CPIHost = "${env.CPI_HOST}"
 		CPIOAuthHost = "${env.CPI_OAUTH_HOST}"
 		CPIOAuthCredentials = "${env.CPI_OAUTH_CRED}"
